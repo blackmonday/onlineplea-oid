@@ -35,6 +35,7 @@ router.post('/find-your-case', function (req, res) {
     req.session.data ['post-code'] = "W1 7SX";
             
     res.redirect ('/your-details');
+    
 })
 
 // *************************
@@ -42,26 +43,27 @@ router.post('/find-your-case', function (req, res) {
 //
 router.post('/find-your-case-error', function (req, res) {
 
-    var referenceNumber = req.session.data['reference-number']
-    var yourPostCode = req.session.data['your-postcode']
+    var referenceNumber = req.session.data['reference-number'];
+    var yourPostCode = req.session.data['your-postcode'];
 
-    if (referenceNumber == "") {
+    if (referenceNumber === "") {
         res.redirect ('/find-your-case-error');
     }
-    if (yourPostCode == "") {
+    if (yourPostCode === "") {
         res.redirect ('/find-your-case-error');
     }
     
     req.session.data ['first-name'] = "Sam";
     req.session.data ['last-name'] = "Smith";
     req.session.data ['address-line-1'] = "38A Baker Street";
-    req.session.data ['address-line-2'] = "Address line 2";
-    req.session.data ['address-line-3'] = "Address line 3";
+    req.session.data ['address-line-2'] = "";
+    req.session.data ['address-line-3'] = "";
     req.session.data ['town-or-city'] = "London";
-    req.session.data ['county'] = "county";
+    req.session.data ['county'] = "";
     req.session.data ['post-code'] = "W1 7SX";
-
+            
     res.redirect ('/your-details');
+
 })
    
 
@@ -77,15 +79,19 @@ router.post('/find-your-case-error', function (req, res) {
 //
 router.post('/your-details', function (req, res) {
 
+    /*
     var nameAddressGroup = req.session.data ['name-address-group'];
     
-    if (nameAddressGroup == "1") {
+    if (nameAddressGroup == '1') {
         res.redirect('/your-plea')
-    } if (nameAddressGroup == "2") {
+    } if (nameAddressGroup == '2') {
         res.redirect('/your-plea')
-    } else {
-        res.redirect('/your-details-error')
     }
+    
+    res.redirect('/your-details-error')
+    */
+
+    res.redirect('/your-plea')
 
 })
 
@@ -94,15 +100,19 @@ router.post('/your-details', function (req, res) {
 //
 router.post('/your-details-error', function (req, res) {
 
+    /*
     var nameAddressGroup = req.session.data ['name-address-group'];
-
-    if (nameAddressGroup == "1") {
+    
+    if (nameAddressGroup == '1') {
         res.redirect('/your-plea')
-    } if (nameAddressGroup == "2") {
+    } if (nameAddressGroup == '2') {
         res.redirect('/your-plea')
-    } else {
-        res.redirect('/your-details-error')
     }
+    
+    res.redirect('/your-details-error')
+    */
+
+    res.redirect('/your-plea')
 
 })
 
@@ -267,6 +277,7 @@ router.post('/your-court-hearing-error', function (req, res) {
     
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
+        req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
         res.redirect('/your-finances')
     } else if (req.session.data['interpreter-required'] == "2") {
         req.session.data['interpreter-required'] = "No";
@@ -350,6 +361,7 @@ router.post('/not-guilty-plea', function (req, res) {
 
 
     res.redirect('/your-finances')
+    
 })
 
 // **************************
@@ -419,6 +431,7 @@ router.post('/not-guilty-plea-error', function (req, res) {
 
 
     res.redirect('/your-finances')
+
 })
 
 
@@ -560,7 +573,7 @@ router.post('/deductions-from-earnings-error', function (req, res) {
     } else {
         res.redirect('/deductions-from-earnings-error')
     }
-    
+
 })
 
 
@@ -649,10 +662,12 @@ router.post('/your-benefits-error', function (req, res) {
     var deductFromBenefitsGroup = req.session.data['deduct-from-benefits-group']
 
     if (deductFromBenefitsGroup == "1"){
+        req.session.data['deduct-from-benefits-group'] = "Yes"
         res.redirect('/your-outgoings')
     }
     
     if (deductFromBenefitsGroup == "2") {
+        req.session.data['deduct-from-benefits-group'] = "No"
         res.redirect('/your-outgoings')
     }
     
@@ -696,9 +711,11 @@ router.post('/your-outgoings-error', function (req, res) {
     var yourOutgoings = req.session.data['your-outgoings-group']
 
     if (yourOutgoings == "1") {
+        req.session.data['your-outgoings-group'] = "Yes"
         res.redirect('/your-outgoings-details')
     }
     if (yourOutgoings == "2") {
+        req.session.data['your-outgoings-group'] = "No"
         res.redirect('/check-your-answers')
     }
     res.redirect('/your-outgoings-error')

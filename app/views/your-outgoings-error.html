@@ -24,8 +24,8 @@
     <div class="grid-row">
         
         <div class="column-two-thirds">
-            
-             <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+ 
+            <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
                 <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
                 Fix the following
                 </h2>
@@ -47,11 +47,11 @@
                         </fieldset>
                         <fieldset>
                             <div class="multiple-choice ">
-                                <input id="radio-1" type="radio" name="your-outgoings-group" value="1">
+                                <input id="radio-1" type="radio" name="your-outgoings-group" value="1" {{ checked('your-outgoings-group','Yes') }}>
                                 <label for="radio-1">Yes</label>
                             </div>
                             <div class="multiple-choice">
-                                <input id="radio-2" type="radio" name="your-outgoings-group" value="2">
+                                <input id="radio-2" type="radio" name="your-outgoings-group" value="2" {{ checked('your-outgoings-group','No') }}>
                                 <label for="radio-2">No</label>
                             </div>
                         </fieldset>
@@ -70,12 +70,22 @@
         <div class="column-third">
             <aside class="govuk-related-items" role="complementary">
                 <h2 class="heading-medium" id="subsection-title">Help and advice</h2>
-                <nav role="navigation" aria-labelledby="subsection-title">
-                <ul class="font-xsmall">
-                    <li>To be confirmed</li>
-                </ul>
-                </nav>
             </aside>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <p class="font-xsmall bold">Generic text about contacting prosecutor on notice to be confirmed</p>
+                
+                <p class="font-xsmall bold top_30 bottom_15">Legal advice</p>
+                <p class="font-xsmall">You can get help from either:</p>
+                <ul class="list list-bullet font-xsmall">
+                    <li><a href="#">a solicitor</a></li>
+                    <li><a href="#">Citizens advice</a></li>
+                </ul>
+                
+                <p class="font-xsmall bold top_30">For help with this online service or the court process contact SJS National Contact Centre</p>
+                <p class="font-xsmall bottom_5">Telephone: 0300 303 0656</p>
+                <p class="font-xsmall top_5 bottom_5">Monday to Friday 8:30am to 5pm</p>
+                <p class="font-xsmall top_5"><a href="#">Find out about call charges</a></p>
+            </nav>
         </div>
 
     </div>

@@ -24,8 +24,8 @@
     <div class="grid-row">
         
         <div class="column-two-thirds">
-            
-             <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+ 
+            <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
                 <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
                 Fix the following
                 </h2>
@@ -33,7 +33,7 @@
                     <li><a href="#error">Error page coming soon!</a></li>
                 </ul>
             </div>
-            
+
             <form class="form" action="" method="post">
                 <div class="form-group">
                     <fieldset class="inline">
@@ -55,11 +55,11 @@
 
                         <fieldset class="inline">
                             <div class="multiple-choice ">
-                                <input id="radio-1" type="radio" name="deduct-from-earnings-group" value="1">
+                                <input id="radio-1" type="radio" name="deduct-from-earnings-group" value="1" {{ checked('deduct-from-earnings-group','Yes') }}>
                                 <label for="radio-1">Yes</label>
                             </div>
                             <div class="multiple-choice">
-                                <input id="radio-2" type="radio" name="deduct-from-earnings-group" value="2">
+                                <input id="radio-2" type="radio" name="deduct-from-earnings-group" value="2" {{ checked('deduct-from-earnings-group','No') }}>
                                 <label for="radio-2">No</label>
                             </div>
                         </fieldset>
