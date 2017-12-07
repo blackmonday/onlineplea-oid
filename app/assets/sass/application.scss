@@ -29,3 +29,97 @@ $path: "/public/images/";
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Adding £ to form inputs
+.input-icon {
+  position: relative;
+}
+
+.input-icon > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+	font-style: normal;
+}
+
+.input-icon > input {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+// Spacings
+.top_60 {
+    margin-top: 60px;
+}
+.top_30 {
+    margin-top: 30px;
+}
+.top_25 {
+    margin-top: 25px;
+}
+.top_20 {
+    margin-top: 20px;
+}
+.top_15 {
+    margin-top: 15px;
+}
+.top_10 {
+    margin-top: 10px;
+}
+.top_5 {
+    margin-top: 5px;
+}
+@media (min-width: 641px)
+{
+    .top_0 {
+        margin-top: 0px;
+    }
+}
+@media (min-width: 0px) and (max-width: 640px)
+{
+    .top_0 {
+        margin-top: 30px;
+    }
+}
+
+.bottom_60 {
+    margin-bottom: 60px;
+}
+.bottom_30 {
+    margin-bottom: 30px;
+}
+.bottom_25 {
+    margin-bottom: 25px;
+}
+.bottom_20 {
+    margin-bottom: 20px;
+}
+.bottom_15 {
+    margin-bottom: 15px;
+}
+.bottom_10 {
+    margin-bottom: 10px;
+}
+.bottom_5 {
+    margin-bottom: 5px;
+}
+.bottom_0 {
+    margin-bottom: 0px;
+}
+
+.width_50 {
+    width: 50%;
+}
+.width_75 {
+    width: 75%;
+}
+.width_100 {
+    width: 100%;
+}
+.width_postcode {
+    width: 150px;
+}

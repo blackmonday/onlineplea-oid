@@ -17,3 +17,97 @@ $(document).ready(function () {
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
 })
+
+
+
+
+// ************
+// Your details
+//
+$('input[name="name-address-group"]').on('change', function() {
+  $('.name-address-fields')
+      .toggle(+this.value === 2 && this.checked);
+}).change();
+
+$('input[name="NIN-radio-inline-group"]').on('change', function() {
+  $('.NIN-fields')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+
+
+
+// *********
+// Your plea
+//
+$('input[name="how-do-you-plea"]').on('change', function() {
+  $('.guilty-plea-fields')
+      .toggle(+this.value === 1 && this.checked);
+  $('.not-guilty-plea-fields')
+      .toggle(+this.value === 2 && this.checked);
+}).change();
+
+
+
+
+// ******************************
+// Your court hearing interpreter
+//
+$('input[name="interpreter-required"]').on('change', function() {
+  $('.interpreter-fields')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+
+
+
+// ***************
+// Not guilty plea
+//
+$('input[name="interpreter-required"]').on('change', function() {
+  $('.interpreter-fields')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+$('input[name="witness-statement-group"]').on('change', function() {
+  $('.witness-statement-fields')
+      .toggle(+this.value === 2 && this.checked);
+}).change();
+
+$('input[name="own-witness-group"]').on('change', function() {
+  $('.own-witness-fields')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+$('input[name="nogo-dates-group"]').on('change', function() {
+  $('.nogo-dates-fields')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+
+
+
+// ***********
+// Your income
+//
+$('input[name="employment-status-group"]').on('change', function() {
+  $('.other-employment-status')
+      .toggle(+this.value === 4 && this.checked);
+}).change();
+
+$('input[name="claiming-benefits-group"]').on('change', function() {
+  $('.claiming-benefits-status')
+      .toggle(+this.value === 1 && this.checked);
+}).change();
+
+
+
+
+// *************
+// Your benefits
+//
+$('input[name="deduct-from-benefits-group"]').on('change', function() {
+  $('.deduct-from-benefits-no')
+      .toggle(+this.value === 2 && this.checked);
+}).change();
+
