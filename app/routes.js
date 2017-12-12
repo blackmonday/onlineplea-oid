@@ -15,6 +15,7 @@ module.exports = router
 //
 router.post('/find-your-case', function (req, res) {
 
+    /*
     var referenceNumber = req.session.data['reference-number'];
     var yourPostCode = req.session.data['your-postcode'];
 
@@ -24,7 +25,8 @@ router.post('/find-your-case', function (req, res) {
     if (yourPostCode === "") {
         res.redirect ('/find-your-case-error');
     }
-    
+    */
+
     req.session.data ['first-name'] = "Sam";
     req.session.data ['last-name'] = "Smith";
     req.session.data ['address-line-1'] = "38A Baker Street";
@@ -33,7 +35,7 @@ router.post('/find-your-case', function (req, res) {
     req.session.data ['town-or-city'] = "London";
     req.session.data ['county'] = "";
     req.session.data ['post-code'] = "W1 7SX";
-            
+    
     res.redirect ('/your-details');
     
 })
@@ -43,6 +45,7 @@ router.post('/find-your-case', function (req, res) {
 //
 router.post('/find-your-case-error', function (req, res) {
 
+    /*
     var referenceNumber = req.session.data['reference-number'];
     var yourPostCode = req.session.data['your-postcode'];
 
@@ -52,7 +55,8 @@ router.post('/find-your-case-error', function (req, res) {
     if (yourPostCode === "") {
         res.redirect ('/find-your-case-error');
     }
-    
+    */
+
     req.session.data ['first-name'] = "Sam";
     req.session.data ['last-name'] = "Smith";
     req.session.data ['address-line-1'] = "38A Baker Street";
@@ -61,7 +65,7 @@ router.post('/find-your-case-error', function (req, res) {
     req.session.data ['town-or-city'] = "London";
     req.session.data ['county'] = "";
     req.session.data ['post-code'] = "W1 7SX";
-            
+    
     res.redirect ('/your-details');
 
 })
@@ -79,7 +83,6 @@ router.post('/find-your-case-error', function (req, res) {
 //
 router.post('/your-details', function (req, res) {
 
-    /*
     var nameAddressGroup = req.session.data ['name-address-group'];
     
     if (nameAddressGroup == '1') {
@@ -88,10 +91,9 @@ router.post('/your-details', function (req, res) {
         res.redirect('/your-plea')
     }
     
+    /*
     res.redirect('/your-details-error')
     */
-
-    res.redirect('/your-plea')
 
 })
 
@@ -100,7 +102,6 @@ router.post('/your-details', function (req, res) {
 //
 router.post('/your-details-error', function (req, res) {
 
-    /*
     var nameAddressGroup = req.session.data ['name-address-group'];
     
     if (nameAddressGroup == '1') {
@@ -109,10 +110,9 @@ router.post('/your-details-error', function (req, res) {
         res.redirect('/your-plea')
     }
     
+    /*
     res.redirect('/your-details-error')
     */
-
-    res.redirect('/your-plea')
 
 })
 
@@ -239,15 +239,19 @@ router.post('/guilty-plea-error', function (req, res) {
 //
 router.post('/your-court-hearing', function (req, res) {
     
-    if (req.session.data['interpreter-required'] !== "1") {
+     /*
+     if (req.session.data['interpreter-required'] !== "1") {
         if (req.session.data['interpreter-required'] !== "2") {
             res.redirect('/your-court-hearing-error')
         }
     }
+    */
     
+    /*
     if ((req.session.data['interpreter-required'] == "1") && (req.session.data['interpreter-language'] == "")) {
         res.redirect('/your-court-hearing-error')
     }
+    */
     
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
@@ -265,15 +269,19 @@ router.post('/your-court-hearing', function (req, res) {
 //
 router.post('/your-court-hearing-error', function (req, res) {
     
-    if (req.session.data['interpreter-required'] !== "1") {
+     /*
+     if (req.session.data['interpreter-required'] !== "1") {
         if (req.session.data['interpreter-required'] !== "2") {
             res.redirect('/your-court-hearing-error')
         }
     }
+    */
     
+    /*
     if ((req.session.data['interpreter-required'] == "1") && (req.session.data['interpreter-language'] == "")) {
         res.redirect('/your-court-hearing-error')
     }
+    */
     
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
@@ -304,6 +312,7 @@ router.post('/not-guilty-plea', function (req, res) {
     // ******
     // errors
     //
+    /*
     if (req.session.data['mitigation-textarea'] == "") {
         res.redirect('/not-guilty-plea-error')
     }  
@@ -326,7 +335,8 @@ router.post('/not-guilty-plea', function (req, res) {
             if (req.session.data['nogo-dates-group'] !== "2") {
                 res.redirect('/not-guilty-plea-error')
             }
-    }  
+    }
+    */
 
     // *************
     // Radio buttons
@@ -358,7 +368,6 @@ router.post('/not-guilty-plea', function (req, res) {
     if (req.session.data['nogo-dates-group'] == "2") {
             req.session.data['nogo-dates-group'] = "No"
     }  
-
 
     res.redirect('/your-finances')
     
@@ -374,6 +383,7 @@ router.post('/not-guilty-plea-error', function (req, res) {
     // ******
     // errors
     //
+    /*
     if (req.session.data['mitigation-textarea'] == "") {
         res.redirect('/not-guilty-plea-error')
     }  
@@ -396,7 +406,8 @@ router.post('/not-guilty-plea-error', function (req, res) {
             if (req.session.data['nogo-dates-group'] !== "2") {
                 res.redirect('/not-guilty-plea-error')
             }
-    }  
+    }
+    */
 
     // *************
     // Radio buttons
@@ -428,7 +439,6 @@ router.post('/not-guilty-plea-error', function (req, res) {
     if (req.session.data['nogo-dates-group'] == "2") {
             req.session.data['nogo-dates-group'] = "No"
     }  
-
 
     res.redirect('/your-finances')
 
