@@ -102,7 +102,7 @@
                         <label class="form-label top_10" for="mobile">Mobile number</label>
                         <input class="form-control" id="mobile" name="mobile" type="tel" value="{{ data['mobile'] }}">
 
-                        <label class="form-label top_30" for="ni-number">
+                        <label class="form-label top_30" for="email">
                             <span class="heading-small">Email address</span>
                             <span class="form-hint">We'll automatically email you a copy of your plea</span>
                         </label>
@@ -130,18 +130,17 @@
                                 <label class="form-label" for="dob-year">Year</label>
                                 <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2016" value="{{ data['dob-year'] }}">
                             </div>
-                            </div>
+                        </div>
                     </fieldset>
 
-                            <label class="form-label top_30" for="ni-number">
-                                <span class="heading-small">National Insurance number (optional)</span>
-                                <span class="form-hint">
-                                    It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’
-                                </span>
-                             </label>
-                            <input class="form-control" id="ni-number" type="text" autocomplete="off" autocorrect="off" spellcheck="false" name="ni-number" value="{{ data['ni-number'] }}">
+                    <label class="form-label top_30" for="ni-number">
+                        <span class="heading-small">National Insurance number (optional)</span>
+                        <span class="form-hint">
+                            It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’
+                        </span>
+                    </label>
+                    <input class="form-control" id="ni-number" type="text" autocomplete="off" autocorrect="off" spellcheck="false" name="ni-number" value="{{ data['ni-number'] }}">
 
-                
                 <div class="form-group top_30">
                     <input class="button" type="submit" value="Continue">
                     <p class="top_15"><a href="javascript:history.go(-1);">Back</a></p>
@@ -151,24 +150,10 @@
         </div>
 
         <div class="column-third">
-            <aside class="govuk-related-items" role="complementary">
-                <h2 class="heading-medium" id="subsection-title">Help and advice</h2>
-            </aside>
-            <nav role="navigation" aria-labelledby="subsection-title">
-                <p class="font-xsmall bold">Generic text about contacting prosecutor on notice to be confirmed</p>
-                
-                <p class="font-xsmall bold top_30 bottom_15">Legal advice</p>
-                <p class="font-xsmall">You can get help from either:</p>
-                <ul class="list list-bullet font-xsmall">
-                    <li><a href="#">a solicitor</a></li>
-                    <li><a href="#">Citizens advice</a></li>
-                </ul>
-                
-                <p class="font-xsmall bold top_30">For help with this online service or the court process contact SJS National Contact Centre</p>
-                <p class="font-xsmall bottom_5">Telephone: 0300 303 0656</p>
-                <p class="font-xsmall top_5 bottom_5">Monday to Friday 8:30am to 5pm</p>
-                <p class="font-xsmall top_5"><a href="#">Find out about call charges</a></p>
-            </nav>
+            {% include "includes/help-and-advice-header.html" %}
+            {% include "includes/help-and-advice-1.html" %}
+            {% include "includes/help-and-advice-2.html" %}
+            {% include "includes/help-and-advice-3.html" %}
         </div>
 
     </div>

@@ -30,7 +30,7 @@
                 Fix the following
                 </h2>
                 <ul class="error-summary-list">
-                    <li><a href="#error">Error page coming soon!</a></li>
+                    <li><a href="#outgoings-error">Would you like to give details of your monthly bills?</a></li>
                 </ul>
             </div>
 
@@ -41,20 +41,23 @@
                             <h1 class="heading-xlarge">Your outgoings</h1>
                         </legend>
 
-                        <fieldset>
-                            <h2 class="heading-small bottom_10">Would you like to give details of your monthly bills?</h2>
-                            <p class="form-hint">Magistrates can take your outgoings into account when deciding how long you should get to pay a penalty</p>
-                        </fieldset>
-                        <fieldset>
-                            <div class="multiple-choice ">
-                                <input id="radio-1" type="radio" name="your-outgoings-group" value="1" {{ checked('your-outgoings-group','Yes') }}>
-                                <label for="radio-1">Yes</label>
-                            </div>
-                            <div class="multiple-choice">
-                                <input id="radio-2" type="radio" name="your-outgoings-group" value="2" {{ checked('your-outgoings-group','No') }}>
-                                <label for="radio-2">No</label>
-                            </div>
-                        </fieldset>
+                        <div class="form-group form-group-error" id="outgoings-error">
+                            <fieldset>
+                                <h2 class="heading-small bottom_10 top_0">Would you like to give details of your monthly bills?</h2>
+                                <p class="form-hint bottom_5">Magistrates can take your outgoings into account when deciding how long you should get to pay a penalty</p>
+                                <span class="error-message bottom_5">Choose an answer</span>
+                            </fieldset>
+                            <fieldset>
+                                <div class="multiple-choice ">
+                                    <input id="radio-1" type="radio" name="your-outgoings-group" value="1" {{ checked('your-outgoings-group','Yes') }}>
+                                    <label for="radio-1">Yes</label>
+                                </div>
+                                <div class="multiple-choice">
+                                    <input id="radio-2" type="radio" name="your-outgoings-group" value="2" {{ checked('your-outgoings-group','No') }}>
+                                    <label for="radio-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
                     </fieldset>
                 </div>
                         

@@ -15,28 +15,25 @@ module.exports = router
 //
 router.post('/find-your-case', function (req, res) {
 
-    /*
     var referenceNumber = req.session.data['reference-number'];
     var yourPostCode = req.session.data['your-postcode'];
 
     if (referenceNumber === "") {
         res.redirect ('/find-your-case-error');
-    }
-    if (yourPostCode === "") {
+    } else if (yourPostCode === "") {
         res.redirect ('/find-your-case-error');
-    }
-    */
+    } else {
+        req.session.data ['first-name'] = "Sam";
+        req.session.data ['last-name'] = "Smith";
+        req.session.data ['address-line-1'] = "38A Baker Street";
+        req.session.data ['address-line-2'] = "";
+        req.session.data ['address-line-3'] = "";
+        req.session.data ['town-or-city'] = "London";
+        req.session.data ['county'] = "";
+        req.session.data ['post-code'] = "W1 7SX";
 
-    req.session.data ['first-name'] = "Sam";
-    req.session.data ['last-name'] = "Smith";
-    req.session.data ['address-line-1'] = "38A Baker Street";
-    req.session.data ['address-line-2'] = "";
-    req.session.data ['address-line-3'] = "";
-    req.session.data ['town-or-city'] = "London";
-    req.session.data ['county'] = "";
-    req.session.data ['post-code'] = "W1 7SX";
-    
-    res.redirect ('/your-details');
+        res.redirect ('/your-details');
+    }
     
 })
 
@@ -45,28 +42,25 @@ router.post('/find-your-case', function (req, res) {
 //
 router.post('/find-your-case-error', function (req, res) {
 
-    /*
     var referenceNumber = req.session.data['reference-number'];
     var yourPostCode = req.session.data['your-postcode'];
 
     if (referenceNumber === "") {
         res.redirect ('/find-your-case-error');
-    }
-    if (yourPostCode === "") {
+    } else if (yourPostCode === "") {
         res.redirect ('/find-your-case-error');
-    }
-    */
+    } else {
+        req.session.data ['first-name'] = "Sam";
+        req.session.data ['last-name'] = "Smith";
+        req.session.data ['address-line-1'] = "38A Baker Street";
+        req.session.data ['address-line-2'] = "";
+        req.session.data ['address-line-3'] = "";
+        req.session.data ['town-or-city'] = "London";
+        req.session.data ['county'] = "";
+        req.session.data ['post-code'] = "W1 7SX";
 
-    req.session.data ['first-name'] = "Sam";
-    req.session.data ['last-name'] = "Smith";
-    req.session.data ['address-line-1'] = "38A Baker Street";
-    req.session.data ['address-line-2'] = "";
-    req.session.data ['address-line-3'] = "";
-    req.session.data ['town-or-city'] = "London";
-    req.session.data ['county'] = "";
-    req.session.data ['post-code'] = "W1 7SX";
-    
-    res.redirect ('/your-details');
+        res.redirect ('/your-details');
+    }
 
 })
    
@@ -84,16 +78,24 @@ router.post('/find-your-case-error', function (req, res) {
 router.post('/your-details', function (req, res) {
 
     var nameAddressGroup = req.session.data ['name-address-group'];
+    var emailAddress = req.session.data['email'];
+    var dobDay = req.session.data['dob-day'];
+    var dobMonth = req.session.data['dob-month'];
+    var dobYear = req.session.data['dob-year'];
     
-    if (nameAddressGroup == '1') {
-        res.redirect('/your-plea')
-    } if (nameAddressGroup == '2') {
+    if (nameAddressGroup == "") {
+        res.redirect('/your-details-error')
+    } else if (emailAddress == "") {
+        res.redirect('/your-details-error')
+    } else if (dobDay == "") {
+        res.redirect('/your-details-error')
+    } else if (dobMonth == "") {
+        res.redirect('/your-details-error')
+    } else if (dobYear == "") {
+        res.redirect('/your-details-error')
+    } else {
         res.redirect('/your-plea')
     }
-    
-    /*
-    res.redirect('/your-details-error')
-    */
 
 })
 
@@ -103,16 +105,24 @@ router.post('/your-details', function (req, res) {
 router.post('/your-details-error', function (req, res) {
 
     var nameAddressGroup = req.session.data ['name-address-group'];
+    var emailAddress = req.session.data['email'];
+    var dobDay = req.session.data['dob-day'];
+    var dobMonth = req.session.data['dob-month'];
+    var dobYear = req.session.data['dob-year'];
     
-    if (nameAddressGroup == '1') {
-        res.redirect('/your-plea')
-    } if (nameAddressGroup == '2') {
+    if (nameAddressGroup == "") {
+        res.redirect('/your-details-error')
+    } else if (emailAddress == "") {
+        res.redirect('/your-details-error')
+    } else if (dobDay == "") {
+        res.redirect('/your-details-error')
+    } else if (dobMonth == "") {
+        res.redirect('/your-details-error')
+    } else if (dobYear == "") {
+        res.redirect('/your-details-error')
+    } else {
         res.redirect('/your-plea')
     }
-    
-    /*
-    res.redirect('/your-details-error')
-    */
 
 })
 
@@ -238,28 +248,19 @@ router.post('/guilty-plea-error', function (req, res) {
 // Your court hearing
 //
 router.post('/your-court-hearing', function (req, res) {
-    
-     /*
-     if (req.session.data['interpreter-required'] !== "1") {
-        if (req.session.data['interpreter-required'] !== "2") {
-            res.redirect('/your-court-hearing-error')
-        }
-    }
-    */
-    
-    /*
-    if ((req.session.data['interpreter-required'] == "1") && (req.session.data['interpreter-language'] == "")) {
-        res.redirect('/your-court-hearing-error')
-    }
-    */
-    
+        
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
+        if (req.session.data['interpreter-language'] == "") {
+            res.redirect('/your-court-hearing-error')
+        }
         req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
         res.redirect('/your-finances')
     } else if (req.session.data['interpreter-required'] == "2") {
         req.session.data['interpreter-required'] = "No";
         res.redirect('/your-finances')
+    } else {
+        res.redirect('/your-court-hearing-error')
     }
     
 })
@@ -268,21 +269,7 @@ router.post('/your-court-hearing', function (req, res) {
 // Your court hearing error page
 //
 router.post('/your-court-hearing-error', function (req, res) {
-    
-     /*
-     if (req.session.data['interpreter-required'] !== "1") {
-        if (req.session.data['interpreter-required'] !== "2") {
-            res.redirect('/your-court-hearing-error')
-        }
-    }
-    */
-    
-    /*
-    if ((req.session.data['interpreter-required'] == "1") && (req.session.data['interpreter-language'] == "")) {
-        res.redirect('/your-court-hearing-error')
-    }
-    */
-    
+        
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
         req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
@@ -290,6 +277,8 @@ router.post('/your-court-hearing-error', function (req, res) {
     } else if (req.session.data['interpreter-required'] == "2") {
         req.session.data['interpreter-required'] = "No";
         res.redirect('/your-finances')
+    } else {
+        res.redirect('/your-court-hearing-error')
     }
     
 })
@@ -458,9 +447,64 @@ router.post('/not-guilty-plea-error', function (req, res) {
 //
 router.post('/your-income', function (req, res) {
 
-    var employmentStatus = req.session.data['employment-status-group']
-    var benefitsStatus = req.session.data['claiming-benefits-group']
+    //var frequencyGroup = req.session.data['frequency-group'];
+    //var averageIncome = req.session.data['average-income']
+    //var employmentStatus = req.session.data['employment-status-group'];
+    var benefitsStatus = req.session.data['claiming-benefits-group'];
+    var benefitsClaimed = req.session.data['benefits-claimed'];
+  
+    /*
+    if (frequencyGroup != "1") {
+        if (frequencyGroup != "2") {
+            if (frequencyGroup != "3") {
+                res.redirect('/your-income-error')
+            }
+        }
+    }
+    */
     
+    /*
+    if (averageIncome == "") {
+        res.redirect('/your-income-error')
+    } else {
+        res.redirect('/your-outgoings')
+    }
+    */
+
+    /*
+    if (employmentStatus == "1") {
+        res.redirect('/your-employment')
+    } else if (employmentStatus == "2") {
+        res.redirect('/your-outgoings')
+    } else if (employmentStatus == "3") {
+        res.redirect('/your-outgoings')
+    } else if (employmentStatus == "4") {
+        res.redirect('/your-outgoings')
+    } else {
+        res.redirect('/your-income-error')
+    }
+    */
+    
+    if ((benefitsStatus == "1") && (benefitsClaimed != "")) {
+        res.redirect('/your-benefits')
+    } else if ((benefitsStatus == "1") && (benefitsClaimed == "")) {
+        res.redirect('/your-income-error')
+    } else if (benefitsStatus == "2") {
+        res.redirect('/your-benefits')
+    } else {
+        res.redirect('/your-income-error')
+    }
+
+
+
+
+    
+    /* *************
+    /* *************
+    /* *************
+    /* *************
+    /* *************
+    /* *************
     if (req.session.data['frequency-group'] !== "1") {
         if (req.session.data['frequency-group'] !== "2") {
             if (req.session.data['frequency-group'] !== "3") {
@@ -480,7 +524,7 @@ router.post('/your-income', function (req, res) {
         req.session.data['employment-status-group'] = "Other"
         req.session.data['other-employment-status'] = "- " + req.session.data['other-employment-status']
     }
-    
+
     if (benefitsStatus == "1") {
         req.session.data['claiming-benefits-group'] = "Yes"
         req.session.data['benefits-claimed'] = "- " + req.session.data['benefits-claimed']
@@ -490,6 +534,11 @@ router.post('/your-income', function (req, res) {
     }
     
     res.redirect('/your-outgoings')
+    ************** *
+    ************** *
+    ************** *
+    ************** */
+
 
 })
 
@@ -497,41 +546,57 @@ router.post('/your-income', function (req, res) {
 // Your income error page
 //
 router.post('/your-income-error', function (req, res) {
-
-    var employmentStatus = req.session.data['employment-status-group']
-    var benefitsStatus = req.session.data['claiming-benefits-group']
     
-    if (req.session.data['frequency-group'] !== "1") {
-        if (req.session.data['frequency-group'] !== "2") {
-            if (req.session.data['frequency-group'] !== "3") {
+    //var frequencyGroup = req.session.data['frequency-group'];
+    //var averageIncome = req.session.data['average-income']
+    //var employmentStatus = req.session.data['employment-status-group'];
+    var benefitsStatus = req.session.data['claiming-benefits-group'];
+    var benefitsClaimed = req.session.data['benefits-claimed'];
+  
+    /*
+    if (frequencyGroup != "1") {
+        if (frequencyGroup != "2") {
+            if (frequencyGroup != "3") {
                 res.redirect('/your-income-error')
             }
         }
     }
+    */
+    
+    /*
+    if (averageIncome == "") {
+        res.redirect('/your-income-error')
+    } else {
+        res.redirect('/your-outgoings')
+    }
+    */
 
+    /*
     if (employmentStatus == "1") {
-        req.session.data['employment-status-group'] = "Employed (full or part-time)"
-        res.redirect('/deductions-from-earnings')
+        res.redirect('/your-employment')
     } else if (employmentStatus == "2") {
-         req.session.data['employment-status-group'] = "Self-employed"
-   } if (employmentStatus == "3") {
-        req.session.data['employment-status-group'] = "Unemployed"
-    } if (employmentStatus == "4") {
-        req.session.data['employment-status-group'] = "Other"
-        req.session.data['other-employment-status'] = "- " + req.session.data['other-employment-status']
+        res.redirect('/your-outgoings')
+    } else if (employmentStatus == "3") {
+        res.redirect('/your-outgoings')
+    } else if (employmentStatus == "4") {
+        res.redirect('/your-outgoings')
+    } else {
+        res.redirect('/your-income-error')
     }
+    */
     
-    if (benefitsStatus == "1") {
-        req.session.data['claiming-benefits-group'] = "Yes"
-        req.session.data['benefits-claimed'] = "- " + req.session.data['benefits-claimed']
+    if ((benefitsStatus == "1") && (benefitsClaimed != "")) {
         res.redirect('/your-benefits')
+    } else if ((benefitsStatus == "1") && (benefitsClaimed == "")) {
+        res.redirect('/your-income-error')
     } else if (benefitsStatus == "2") {
-        req.session.data['claiming-benefits-group'] = "No"
+        res.redirect('/your-benefits')
+    } else {
+        res.redirect('/your-income-error')
     }
-    
-    res.redirect('/your-outgoings')
 
 })
+
 
 
 
@@ -705,10 +770,12 @@ router.post('/your-outgoings', function (req, res) {
         req.session.data['your-outgoings-group'] = "Yes"
         res.redirect('/your-outgoings-details')
     }
+    
     if (yourOutgoings == "2") {
         req.session.data['your-outgoings-group'] = "No"
         res.redirect('/check-your-answers')
     }
+    
     res.redirect('/your-outgoings-error')
     
 })
@@ -724,10 +791,12 @@ router.post('/your-outgoings-error', function (req, res) {
         req.session.data['your-outgoings-group'] = "Yes"
         res.redirect('/your-outgoings-details')
     }
+    
     if (yourOutgoings == "2") {
         req.session.data['your-outgoings-group'] = "No"
         res.redirect('/check-your-answers')
     }
+    
     res.redirect('/your-outgoings-error')
     
 })

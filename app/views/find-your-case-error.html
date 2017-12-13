@@ -30,7 +30,8 @@
                 Fix the following
                 </h2>
                 <ul class="error-summary-list">
-                    <li><a href="#error">Error page coming soon!</a></li>
+                    <li><a href="#reference-number-error">Case or Unique Reference Number - enter your unique reference number</a></li>
+                    <li><a href="#postcode-error">Postcode - enter your postcode</a></li>
                 </ul>
             </div>
 
@@ -40,24 +41,33 @@
                         <legend>
                             <h1 class="heading-xlarge">Find your case</h1>
                         </legend>
-                        <label class="form-label" for="reference-number">
-                            <span class="heading-small">Case or Unique Reference Number</span>
-                        </label>
-                        <input class="form-control" id="reference-number" class="reference-number" name="reference-number" value="{{ data['reference-number'] }}">
-                        <details class="top_15">
-                            <summary>
-                                <span class="summary">Where to find this on your notice</span>
-                            </summary>
-                            <div class="panel panel-border-narrow">
-                                <p class="bottom_60">
-                                    <img src="/public/images/Where-to-find-large-2x.png" width="100%">
-                                </p>
-                            </div>
-                        </details>    
-                        <label class="form-label top_15" for="your-postcode">
-                            <span class="heading-small">Your postcode, as shown on your notice</span>
-                        </label>
-                        <input class="form-control" id="your-postcode" type="text" name="your-postcode" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="{{ data['your-postcode'] }}">
+                        
+                        <div class="form-group form-group-error" id="reference-number-error">
+                            <label class="form-label" for="reference-number">
+                                <span class="heading-small">Case or Unique Reference Number</span>
+                                <span class="error-message">Enter your unique reference number - contact the <a href="#" style="color:#B10E1E">Customer Contact Centre</a> if you don't know it</span>
+                            </label>
+                            <input class="form-control" id="reference-number" class="reference-number" name="reference-number" value="{{ data['reference-number'] }}">
+                            <details class="top_15">
+                                <summary>
+                                    <span class="summary">Where to find this on your notice</span>
+                                </summary>
+                                <div class="panel panel-border-narrow">
+                                    <p class="bottom_60">
+                                        <img src="/public/images/Where-to-find-large-2x.png" width="100%">
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                        
+                        <div class="form-group form-group-error" id="postcode-error">
+                            <label class="form-label top_15" for="your-postcode">
+                                <span class="heading-small">Your postcode, as shown on your notice</span>
+                                <span class="error-message">Enter your postcode</span>
+                            </label>
+                            <input class="form-control" id="your-postcode" type="text" name="your-postcode" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="{{ data['your-postcode'] }}">
+                        </div>
+                        
                     </fieldset>
                 </div>
                 <div class="form-group">
@@ -68,24 +78,10 @@
         </div>
 
         <div class="column-third">
-            <aside class="govuk-related-items" role="complementary">
-                <h2 class="heading-medium" id="subsection-title">Help and advice</h2>
-            </aside>
-            <nav role="navigation" aria-labelledby="subsection-title">
-                <p class="font-xsmall bold">Generic text about contacting prosecutor on notice to be confirmed</p>
-                
-                <p class="font-xsmall bold top_30 bottom_15">Legal advice</p>
-                <p class="font-xsmall">You can get help from either:</p>
-                <ul class="list list-bullet font-xsmall">
-                    <li><a href="#">a solicitor</a></li>
-                    <li><a href="#">Citizens advice</a></li>
-                </ul>
-                
-                <p class="font-xsmall bold top_30">For help with this online service or the court process contact SJS National Contact Centre</p>
-                <p class="font-xsmall bottom_5">Telephone: 0300 303 0656</p>
-                <p class="font-xsmall top_5 bottom_5">Monday to Friday 8:30am to 5pm</p>
-                <p class="font-xsmall top_5"><a href="#">Find out about call charges</a></p>
-            </nav>
+            {% include "includes/help-and-advice-header.html" %}
+            {% include "includes/help-and-advice-1.html" %}
+            {% include "includes/help-and-advice-2.html" %}
+            {% include "includes/help-and-advice-3.html" %}
         </div>
 
     </div>
