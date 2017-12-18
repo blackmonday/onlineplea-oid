@@ -660,14 +660,12 @@ router.post('/your-benefits', function (req, res) {
     if (deductFromBenefitsGroup == "1"){
         req.session.data['deduct-from-benefits-group'] = "Yes"
         res.redirect('/your-outgoings')
-    }
-    
-    if (deductFromBenefitsGroup == "2") {
+    } else if (deductFromBenefitsGroup == "2") {
         req.session.data['deduct-from-benefits-group'] = "No"
         res.redirect('/your-outgoings')
+    } else {
+        res.redirect('/your-benefits-error')
     }
-    
-    res.redirect('/your-benefits-error')
 
 })
 
@@ -681,14 +679,12 @@ router.post('/your-benefits-error', function (req, res) {
     if (deductFromBenefitsGroup == "1"){
         req.session.data['deduct-from-benefits-group'] = "Yes"
         res.redirect('/your-outgoings')
-    }
-    
-    if (deductFromBenefitsGroup == "2") {
+    } else if (deductFromBenefitsGroup == "2") {
         req.session.data['deduct-from-benefits-group'] = "No"
         res.redirect('/your-outgoings')
+    } else {
+        res.redirect('/your-benefits-error')
     }
-    
-    res.redirect('/your-benefits-error')
 
 })
 
@@ -789,22 +785,6 @@ router.post('/your-outgoings-details', function (req, res) {
     
     res.redirect('/check-your-answers')
     
-})
-
-
-
-
-
-
-
-
-// *************
-// Your benefits
-//
-router.post('/your-benefits', function (req, res) {
-    
-    res.redirect('/your-outgoings')
-
 })
 
 
