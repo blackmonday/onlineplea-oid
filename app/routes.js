@@ -457,15 +457,27 @@ router.post('/your-income', function (req, res) {
 
     //var frequencyGroup = req.session.data['frequency-group'];
     var averageIncome = req.session.data['average-income']
-    //var employmentStatus = req.session.data['employment-status-group'];
+    var employmentStatus = req.session.data['employment-status-group'];
     //var benefitsStatus = req.session.data['claiming-benefits-group'];
-    //var benefitsClaimed = req.session.data['benefits-claimed'];
-  
-    if (averageIncome == "") {
+    //var benefitsClaimed = req.session.data['benefits-claimed'];\\
+    
+    if ((averageIncome != "") && (employmentStatus == "1")) {
+        res.redirect('/deductions-from-earnings')
+    } else if (averageIncome == "") {
         res.redirect('/your-income-error')
     } else {
         res.redirect('/your-outgoings')
     }
+    
+    /*
+    if (averageIncome == "") {
+        res.redirect('/your-income-error')
+    } else if (employmentStatus == 1) {
+        res.redirect('/deductions-from-earnings')
+    } else {
+        res.redirect('/your-outgoings')
+    }
+    */
 
     /* *************
     /* *************
@@ -517,11 +529,13 @@ router.post('/your-income-error', function (req, res) {
     
     //var frequencyGroup = req.session.data['frequency-group'];
     var averageIncome = req.session.data['average-income']
-    //var employmentStatus = req.session.data['employment-status-group'];
+    var employmentStatus = req.session.data['employment-status-group'];
     //var benefitsStatus = req.session.data['claiming-benefits-group'];
     //var benefitsClaimed = req.session.data['benefits-claimed'];
   
-    if (averageIncome == "") {
+    if ((averageIncome != "") && (employmentStatus == "1")) {
+        res.redirect('/deductions-from-earnings')
+    } else if (averageIncome == "") {
         res.redirect('/your-income-error')
     } else {
         res.redirect('/your-outgoings')
@@ -600,14 +614,12 @@ router.post('/your-employment', function (req, res) {
 
     if (employerName == ""){
         res.redirect('/your-employment-error')
-    }
-    
-    if (benefitsStatus == "1") {
+    } else if (benefitsStatus == "1") {
         res.redirect('/your-benefits')
+    } else {
+        res.redirect('/your-outgoings')
     }
     
-    res.redirect('/your-outgoings')
-
 })
 
 // **************************
@@ -620,13 +632,11 @@ router.post('/your-employment-error', function (req, res) {
 
     if (employerName == ""){
         res.redirect('/your-employment-error')
-    }
-    
-    if (benefitsStatus == "1") {
+    } else if (benefitsStatus == "1") {
         res.redirect('/your-benefits')
+    } else {
+        res.redirect('/your-outgoings')
     }
-    
-    res.redirect('/your-outgoings')
 
 })
 
@@ -752,6 +762,7 @@ router.post('/your-outgoings-details', function (req, res) {
     var childMaintenanceTotal = parseInt(req.session.data['child-maintenance'])
     var otherExpensesTotal = parseInt(req.session.data['other-expenses-amount'])
     
+    /*
     if (accomodationTotal != accomodationTotal) {
         accomodationTotal = 0
     }
@@ -770,19 +781,17 @@ router.post('/your-outgoings-details', function (req, res) {
     if (otherExpensesTotal != otherExpensesTotal) {
         otherExpensesTotal = 0
     }
+    */
     
-    if (req.session.data['other-expenses-list'] !== "") {
-      req.session.data['other-expenses-list'] = " including: " + req.session.data['other-expenses-list']
-    }
-  
     req.session.data['benefits-total'] = accomodationTotal + councilTaxTotal + houseHoldBillsTotal + travelExpensesTotal + childMaintenanceTotal + otherExpensesTotal
-    
-    if (req.session.data['benefits-total'] == 0) {
-        req.session.data['benefits-total'] = req.session.data['benefits-total'] + " - you didn't give any details"
-    }
 
-    res.redirect('/check-your-answers')
-
+    if (req.session.data['other-expenses-list'] !== "") {
+        req.session.data['other-expenses-list'] = " including: " + req.session.data['other-expenses-list']
+        res.redirect('/check-your-answers')
+    } else {
+        req.session.data['benefits-total'] = "0 - You didn't give any details"
+        res.redirect('/check-your-answers')
+    } 
 })
 
 

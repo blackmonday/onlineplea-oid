@@ -30,7 +30,7 @@
                 Fix the following
                 </h2>
                 <ul class="error-summary-list">
-                    <li><a href="#error">Error page coming soon!</a></li>
+                    <li><a href="#error">Employer’s name - You must provide your employer's name</a></li>
                 </ul>
             </div>
 
@@ -53,10 +53,13 @@
                         </fieldset>
                     
 
-                        <fieldset class="bottom_15">
-                            <label class="form-label" for="employer-name"><span class="bold-small">Employer name</span></label>
-                            <input class="form-control width_75" id="employer-name" type="text" autocomplete="off" autocorrect="off" spellcheck="false" name="employer-name" value="{{ data['employer-name'] }}">
-                        </fieldset>
+                        <div class="form-group form-group-error" id="error">
+                            <fieldset class="bottom_15">
+                                <label class="form-label" for="employer-name"><span class="bold-small">Employer name</span></label>
+                                <span class="error-message bottom_5">You must provide your employer's name</span>
+                                <input class="form-control width_75" id="employer-name" type="text" autocomplete="off" autocorrect="off" spellcheck="false" name="employer-name" value="{{ data['employer-name'] }}">
+                            </fieldset>
+                        </div>
 
                         <legend>
                             <h2 class="heading-medium">Employer's address</h1>

@@ -42,7 +42,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="accomodation" type="number" name="accomodation" value="{{ data['accomodation'] }}">
+                                    <input class="form-control" id="accomodation" type="number" min="0.01" step="0.01" name="accomodation" value="{{ data['accomodation'] }}">
                                 </div>
                                 
                                 <label class="form-label top_15" for="council-tax">
@@ -50,7 +50,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="council-tax" type="number" name="council-tax" value="{{ data['council-tax'] }}">
+                                    <input class="form-control" id="council-tax" type="number" min="0.01" step="0.01" name="council-tax" value="{{ data['council-tax'] }}">
                                 </div>
                                 
                                 <label class="form-label top_15" for="household-bills">
@@ -59,7 +59,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="household-bills" type="number" name="household-bills" value="{{ data['household-bills'] }}">
+                                    <input class="form-control" id="household-bills" type="number" min="0.01" step="0.01" name="household-bills" value="{{ data['household-bills'] }}">
                                 </div>
                                 
                                 <label class="form-label top_15" for="travel-expeneses">
@@ -68,7 +68,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="travel-expeneses" type="number" name="travel-expeneses" value="{{ data['travel-expeneses'] }}">
+                                    <input class="form-control" id="travel-expeneses" type="number" min="0.01" step="0.01" name="travel-expeneses" value="{{ data['travel-expeneses'] }}">
                                 </div>
                                  
                                 <label class="form-label top_15" for="child-maintenance">
@@ -76,7 +76,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="child-maintenance" type="number" name="child-maintenance" value="{{ data['child-maintenance'] }}">
+                                    <input class="form-control" id="child-maintenance" type="number" min="0.01" step="0.01" name="child-maintenance" value="{{ data['child-maintenance'] }}">
                                 </div>
                                  
                                 <label class="form-label top_15" for="other-expenses-list">
@@ -90,7 +90,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i>£</i>
-                                    <input class="form-control" id="other-expenses-amount" type="number" name="other-expenses-amount" value="{{ data['other-expenses-amount'] }}">
+                                    <input class="form-control" id="other-expenses-amount" type="number" min="0.01" step="0.01" name="other-expenses-amount" value="{{ data['other-expenses-amount'] }}">
                                 </div>
                         </div>
                     
