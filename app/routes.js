@@ -77,21 +77,13 @@ router.post('/find-your-case-error', function (req, res) {
 //
 router.post('/your-details', function (req, res) {
 
-    var nameAddressGroup = req.session.data ['name-address-group'];
+    //var nameAddressGroup = req.session.data ['name-address-group'];
     var emailAddress = req.session.data['email'];
-    var dobDay = req.session.data['dob-day'];
-    var dobMonth = req.session.data['dob-month'];
-    var dobYear = req.session.data['dob-year'];
+    //var dobDay = req.session.data['dob-day'];
+    //var dobMonth = req.session.data['dob-month'];
+    //var dobYear = req.session.data['dob-year'];
     
-    if (nameAddressGroup == "") {
-        res.redirect('/your-details-error')
-    } else if (emailAddress == "") {
-        res.redirect('/your-details-error')
-    } else if (dobDay == "") {
-        res.redirect('/your-details-error')
-    } else if (dobMonth == "") {
-        res.redirect('/your-details-error')
-    } else if (dobYear == "") {
+    if (emailAddress == "") {
         res.redirect('/your-details-error')
     } else {
         res.redirect('/your-plea')
@@ -104,21 +96,13 @@ router.post('/your-details', function (req, res) {
 //
 router.post('/your-details-error', function (req, res) {
 
-    var nameAddressGroup = req.session.data ['name-address-group'];
+    //var nameAddressGroup = req.session.data ['name-address-group'];
     var emailAddress = req.session.data['email'];
-    var dobDay = req.session.data['dob-day'];
-    var dobMonth = req.session.data['dob-month'];
-    var dobYear = req.session.data['dob-year'];
+    //var dobDay = req.session.data['dob-day'];
+    //var dobMonth = req.session.data['dob-month'];
+    //var dobYear = req.session.data['dob-year'];
     
-    if (nameAddressGroup == "") {
-        res.redirect('/your-details-error')
-    } else if (emailAddress == "") {
-        res.redirect('/your-details-error')
-    } else if (dobDay == "") {
-        res.redirect('/your-details-error')
-    } else if (dobMonth == "") {
-        res.redirect('/your-details-error')
-    } else if (dobYear == "") {
+    if (emailAddress == "") {
         res.redirect('/your-details-error')
     } else {
         res.redirect('/your-plea')
@@ -252,7 +236,7 @@ router.post('/your-court-hearing', function (req, res) {
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
         if (req.session.data['interpreter-language'] == "") {
-            res.redirect('/your-court-hearing-error')
+            res.redirect('/your-court-hearing-error-2')
         }
         req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
         res.redirect('/your-finances')
@@ -272,6 +256,30 @@ router.post('/your-court-hearing-error', function (req, res) {
         
     if (req.session.data['interpreter-required'] == "1") {
         req.session.data['interpreter-required'] = "Yes";
+        if (req.session.data['interpreter-language'] == "") {
+            res.redirect('/your-court-hearing-error-2')
+        }
+        req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
+        res.redirect('/your-finances')
+    } else if (req.session.data['interpreter-required'] == "2") {
+        req.session.data['interpreter-required'] = "No";
+        res.redirect('/your-finances')
+    } else {
+        res.redirect('/your-court-hearing-error')
+    }
+    
+})
+
+// ************************££*****
+// Your court hearing error page 2
+//
+router.post('/your-court-hearing-error-2', function (req, res) {
+        
+    if (req.session.data['interpreter-required'] == "1") {
+        req.session.data['interpreter-required'] = "Yes";
+        if (req.session.data['interpreter-language'] == "") {
+            res.redirect('/your-court-hearing-error-2')
+        }
         req.session.data['interpreter-language'] = "- " + req.session.data['interpreter-language'];
         res.redirect('/your-finances')
     } else if (req.session.data['interpreter-required'] == "2") {

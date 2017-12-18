@@ -30,7 +30,7 @@
                 Fix the following
                 </h2>
                 <ul class="error-summary-list">
-                    <li><a href="#details-correct-error">Are these details correct? You must tell us if the name and address on the notice we sent to you is correct</a></li>
+                    <li><a href="#email-error">Email address</a></li>
                 </ul>
             </div>
 
@@ -51,23 +51,19 @@
             <form class="form" action="" method="post">
                 <div class="form-group">
                     <fieldset class="inline">
+                        <legend>
+                            <p class="heading-small">Are these details correct?</p>
+                        </legend>
 
-                        <div class="form-group form-group-error" id="details-correct-error">
-                            <legend>
-                                <p class="heading-small">Are these details correct?</p>
-                                <span class="error-message">You must tell us if the name and address on the notice we sent to you is correct</span>
-                            </legend>
+                        <div class="multiple-choice">
+                            <input id="name-address-1" type="radio" name="name-address-group" value="1" {{ checked('name-address-group','1') }}>
 
-                            <div class="multiple-choice">
-                                <input id="name-address-1" type="radio" name="name-address-group" value="1" {{ checked('name-address-group','1') }}>
+                            <label for="name-address-1">Yes</label>
+                        </div>
 
-                                <label for="name-address-1">Yes</label>
-                            </div>
-
-                            <div class="multiple-choice">
-                                <input id="name-address-2" type="radio" name="name-address-group" value="2" {{ checked('name-address-group','2') }}>
-                                <label for="name-address-2">No</label>
-                            </div>
+                        <div class="multiple-choice">
+                            <input id="name-address-2" type="radio" name="name-address-group" value="2" {{ checked('name-address-group','2') }}>
+                            <label for="name-address-2">No</label>
                         </div>
                     </fieldset>
                 </div>
@@ -113,11 +109,14 @@
                         <label class="form-label top_10" for="mobile">Mobile number</label>
                         <input class="form-control" id="mobile" name="mobile" type="tel" value="{{ data['mobile'] }}">
 
-                        <label class="form-label top_30" for="ni-number">
-                            <span class="heading-small">Email address</span>
-                            <span class="form-hint">We'll automatically email you a copy of your plea</span>
-                        </label>
-                        <input class="form-control" id="email" type="email" autocomplete="off" autocorrect="off" spellcheck="false" name="email" value="{{ data['email'] }}">
+                        <div class="form-group form-group-error" id="email-error">
+                            <label class="form-label top_30" for="ni-number">
+                                <span class="heading-small">Email address</span>
+                                <span class="form-hint">We'll automatically email you a copy of your plea</span>
+                                <span class="error-message bottom_5">Enter a valid email address</span>
+                            </label>
+                            <input class="form-control" id="email" type="email" autocomplete="off" autocorrect="off" spellcheck="false" name="email" value="{{ data['email'] }}"> 
+                        </div>
                         
                         <legend>
                             <span class="form-label-bold top_30">
