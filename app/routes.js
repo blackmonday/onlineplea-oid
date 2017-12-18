@@ -448,57 +448,17 @@ router.post('/not-guilty-plea-error', function (req, res) {
 router.post('/your-income', function (req, res) {
 
     //var frequencyGroup = req.session.data['frequency-group'];
-    //var averageIncome = req.session.data['average-income']
+    var averageIncome = req.session.data['average-income']
     //var employmentStatus = req.session.data['employment-status-group'];
-    var benefitsStatus = req.session.data['claiming-benefits-group'];
-    var benefitsClaimed = req.session.data['benefits-claimed'];
+    //var benefitsStatus = req.session.data['claiming-benefits-group'];
+    //var benefitsClaimed = req.session.data['benefits-claimed'];
   
-    /*
-    if (frequencyGroup != "1") {
-        if (frequencyGroup != "2") {
-            if (frequencyGroup != "3") {
-                res.redirect('/your-income-error')
-            }
-        }
-    }
-    */
-    
-    /*
     if (averageIncome == "") {
         res.redirect('/your-income-error')
     } else {
         res.redirect('/your-outgoings')
     }
-    */
 
-    /*
-    if (employmentStatus == "1") {
-        res.redirect('/your-employment')
-    } else if (employmentStatus == "2") {
-        res.redirect('/your-outgoings')
-    } else if (employmentStatus == "3") {
-        res.redirect('/your-outgoings')
-    } else if (employmentStatus == "4") {
-        res.redirect('/your-outgoings')
-    } else {
-        res.redirect('/your-income-error')
-    }
-    */
-    
-    if ((benefitsStatus == "1") && (benefitsClaimed != "")) {
-        res.redirect('/your-benefits')
-    } else if ((benefitsStatus == "1") && (benefitsClaimed == "")) {
-        res.redirect('/your-income-error')
-    } else if (benefitsStatus == "2") {
-        res.redirect('/your-benefits')
-    } else {
-        res.redirect('/your-income-error')
-    }
-
-
-
-
-    
     /* *************
     /* *************
     /* *************
@@ -548,51 +508,15 @@ router.post('/your-income', function (req, res) {
 router.post('/your-income-error', function (req, res) {
     
     //var frequencyGroup = req.session.data['frequency-group'];
-    //var averageIncome = req.session.data['average-income']
+    var averageIncome = req.session.data['average-income']
     //var employmentStatus = req.session.data['employment-status-group'];
-    var benefitsStatus = req.session.data['claiming-benefits-group'];
-    var benefitsClaimed = req.session.data['benefits-claimed'];
+    //var benefitsStatus = req.session.data['claiming-benefits-group'];
+    //var benefitsClaimed = req.session.data['benefits-claimed'];
   
-    /*
-    if (frequencyGroup != "1") {
-        if (frequencyGroup != "2") {
-            if (frequencyGroup != "3") {
-                res.redirect('/your-income-error')
-            }
-        }
-    }
-    */
-    
-    /*
     if (averageIncome == "") {
         res.redirect('/your-income-error')
     } else {
         res.redirect('/your-outgoings')
-    }
-    */
-
-    /*
-    if (employmentStatus == "1") {
-        res.redirect('/your-employment')
-    } else if (employmentStatus == "2") {
-        res.redirect('/your-outgoings')
-    } else if (employmentStatus == "3") {
-        res.redirect('/your-outgoings')
-    } else if (employmentStatus == "4") {
-        res.redirect('/your-outgoings')
-    } else {
-        res.redirect('/your-income-error')
-    }
-    */
-    
-    if ((benefitsStatus == "1") && (benefitsClaimed != "")) {
-        res.redirect('/your-benefits')
-    } else if ((benefitsStatus == "1") && (benefitsClaimed == "")) {
-        res.redirect('/your-income-error')
-    } else if (benefitsStatus == "2") {
-        res.redirect('/your-benefits')
-    } else {
-        res.redirect('/your-income-error')
     }
 
 })
