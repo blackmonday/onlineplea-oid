@@ -711,14 +711,12 @@ router.post('/your-outgoings', function (req, res) {
     if (yourOutgoings == "1") {
         req.session.data['your-outgoings-group'] = "Yes"
         res.redirect('/your-outgoings-details')
-    }
-    
-    if (yourOutgoings == "2") {
+    } else if (yourOutgoings == "2") {
         req.session.data['your-outgoings-group'] = "No"
         res.redirect('/check-your-answers')
+    } else {
+        res.redirect('/your-outgoings-error')
     }
-    
-    res.redirect('/your-outgoings-error')
     
 })
 
@@ -732,14 +730,12 @@ router.post('/your-outgoings-error', function (req, res) {
     if (yourOutgoings == "1") {
         req.session.data['your-outgoings-group'] = "Yes"
         res.redirect('/your-outgoings-details')
-    }
-    
-    if (yourOutgoings == "2") {
+    } else if (yourOutgoings == "2") {
         req.session.data['your-outgoings-group'] = "No"
         res.redirect('/check-your-answers')
+    } else {
+        res.redirect('/your-outgoings-error')
     }
-    
-    res.redirect('/your-outgoings-error')
     
 })
 
@@ -762,36 +758,37 @@ router.post('/your-outgoings-details', function (req, res) {
     var childMaintenanceTotal = parseInt(req.session.data['child-maintenance'])
     var otherExpensesTotal = parseInt(req.session.data['other-expenses-amount'])
     
-    /*
     if (accomodationTotal != accomodationTotal) {
-        accomodationTotal = 0
+        accomodationTotal = 0;
     }
     if (councilTaxTotal != councilTaxTotal) {
-        councilTaxTotal = 0
+        councilTaxTotal = 0;
     }
     if (houseHoldBillsTotal != houseHoldBillsTotal) {
-        houseHoldBillsTotal = 0
+        houseHoldBillsTotal = 0;
     }
     if (travelExpensesTotal != travelExpensesTotal) {
-        travelExpensesTotal = 0
+        travelExpensesTotal = 0;
     }
     if (childMaintenanceTotal != childMaintenanceTotal) {
-        childMaintenanceTotal = 0
+        childMaintenanceTotal = 0;
     }
     if (otherExpensesTotal != otherExpensesTotal) {
-        otherExpensesTotal = 0
+        otherExpensesTotal = 0;
     }
-    */
-    
-    req.session.data['benefits-total'] = accomodationTotal + councilTaxTotal + houseHoldBillsTotal + travelExpensesTotal + childMaintenanceTotal + otherExpensesTotal
 
     if (req.session.data['other-expenses-list'] !== "") {
         req.session.data['other-expenses-list'] = " including: " + req.session.data['other-expenses-list']
-        res.redirect('/check-your-answers')
-    } else {
-        req.session.data['benefits-total'] = "0 - You didn't give any details"
-        res.redirect('/check-your-answers')
-    } 
+    }
+    
+    req.session.data['benefits-total'] = accomodationTotal + councilTaxTotal + houseHoldBillsTotal + travelExpensesTotal + childMaintenanceTotal + otherExpensesTotal;
+    
+    if (req.session.data['benefits-total'] == "0") {
+        req.session.data['benefits-total'] = "0 - you didn't specify any outgoings"
+    }
+    
+    res.redirect('/check-your-answers')
+    
 })
 
 
