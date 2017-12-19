@@ -30,7 +30,7 @@
                 Fix the following
                 </h2>
                 <ul class="error-summary-list">
-                    <li><a href="#error">Error page coming soon!</a></li>
+                    <li><a href="#error">If you need to pay a penalty, would you like us to deduct it from your benefits?</a></li>
                 </ul>
             </div>
 
@@ -39,27 +39,32 @@
                     <fieldset class="inline">
                         <legend>
                             <h1 class="heading-xlarge">Your benefits</h1>
-                            <p class="heading-small">If you need to pay a penalty, would you like us to deduct it from your benefits?</p>
                         </legend>
-
-                        <fieldset>
-                            <div class="multiple-choice ">
-                                <input id="radio-1" type="radio" name="deduct-from-benefits-group" value="1" {{ checked('deduct-from-benefits-group','Yes') }}>
-                                <label for="radio-1">Yes</label>
-                            </div>
-                            <div class="multiple-choice">
-                                <input id="radio-2" type="radio" name="deduct-from-benefits-group" value="2" {{ checked('deduct-from-benefits-group','No') }}>
-                                <label for="radio-2">No</label>
-                            </div>
-                        </fieldset>
                         
-                        <div class="deduct-from-benefits-no top_15">
-                            <div class="panel panel-border-wide">
-                                <p class="bottom_10">Please note we can deduct without your agreement if:</p>
-                                <ul class="list list-bullet">
-                                    <li>you’ve failed to pay a penalty in the past</li>
-                                    <li>the court orders you to pay compensation</li>
-                                </ul>
+                        <div class="form-group form-group-error" id="plea-error">
+                            <p class="heading-small bottom_0">If you need to pay a penalty, would you like us to deduct it from your benefits?</p>
+                            
+                            <span class="error-message bottom_5">Choose an answer</span>
+
+                            <fieldset>
+                                <div class="multiple-choice ">
+                                    <input id="radio-1" type="radio" name="deduct-from-benefits-group" value="1" {{ checked('deduct-from-benefits-group','Yes') }}>
+                                    <label for="radio-1">Yes</label>
+                                </div>
+                                <div class="multiple-choice">
+                                    <input id="radio-2" type="radio" name="deduct-from-benefits-group" value="2" {{ checked('deduct-from-benefits-group','No') }}>
+                                    <label for="radio-2">No</label>
+                                </div>
+                            </fieldset>
+
+                            <div class="deduct-from-benefits-no top_15">
+                                <div class="panel panel-border-wide">
+                                    <p class="bottom_10">Please note we can deduct without your agreement if:</p>
+                                    <ul class="list list-bullet">
+                                        <li>you’ve failed to pay a penalty in the past</li>
+                                        <li>the court orders you to pay compensation</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     
@@ -76,8 +81,8 @@
         
         <div class="column-third">
             {% include "includes/help-and-advice-header.html" %}
-            {% include "includes/help-and-advice-1.html" %}
-            {% include "includes/help-and-advice-2.html" %}
+            <!--{% include "includes/help-and-advice-1.html" %}
+            {% include "includes/help-and-advice-2.html" %}-->
             {% include "includes/help-and-advice-3.html" %}
         </div>
 

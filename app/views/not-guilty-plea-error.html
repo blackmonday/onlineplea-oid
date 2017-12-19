@@ -25,18 +25,31 @@
         
         <div class="column-two-thirds">
  
+             <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+                <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+                Fix the following
+                </h2>
+                <ul class="error-summary-list">
+                    <li><a href="#error">Why do you believe you're not guilty? - Tell us why you believe you are not guilty</a></li>
+                </ul>
+            </div>
+
             <h1 class="heading-xlarge">Not guilty plea</h1>
-            <p>Provide information for magistrates ahead of your court hearing.</p>
+            <p class="bottom_10">Provide information for magistrates ahead of your court hearing.</p>
+            <p class="bottom_10">&nbsp;</p>
                                 
             <form class="form" action="" method="post">
                 <div class="form-group">
                     
-                    <fieldset>
-                        <label class="form-label" for="notguilty-textarea">
-                            <p class="heading-small bottom_10">Why do you believe you're not guilty?</p>
-                        </label>
-                        <textarea class="form-control form-control-3-4" name="mitigation-textarea" id="mitigation-textarea" rows="5">{{ data['mitigation-textarea'] }}</textarea>
-                    </fieldset>
+                    <div class="form-group form-group-error" id="error">
+                        <fieldset>
+                            <label class="form-label" for="notguilty-textarea">
+                                <p class="heading-small top_0 bottom_0">Why do you believe you're not guilty?</p>
+                            </label>
+                            <span class="error-message top_0 bottom_5">Tell us why you believe you are not guilty</span>
+                            <textarea class="form-control form-control-3-4" name="mitigation-textarea" id="mitigation-textarea" rows="5">{{ data['mitigation-textarea'] }}</textarea>
+                        </fieldset>
+                    </div>
                     
                     <fieldset class="inline">
                         <legend>

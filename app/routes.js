@@ -306,38 +306,10 @@ router.post('/not-guilty-plea', function (req, res) {
     
     req.session.data['how-do-you-plea-2'] = "Yes - there will be a court hearing when pleading not guilty";
     
-    // ******
-    // errors
+    // **************************
+    // Radio buttons setting data
     //
-    /*
-    if (req.session.data['mitigation-textarea'] == "") {
-        res.redirect('/not-guilty-plea-error')
-    }  
-    if (req.session.data['interpreter-required'] !== "1") {
-            if (req.session.data['interpreter-required'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['witness-statement-group'] !== "1") {
-            if (req.session.data['witness-statement-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['own-witness-group'] !== "1") {
-            if (req.session.data['own-witness-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['nogo-dates-group'] !== "1") {
-            if (req.session.data['nogo-dates-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }
-    */
-
-    // *************
-    // Radio buttons
-    //
+    // Interpreter required?
     if (req.session.data['interpreter-required'] == "1") {
             req.session.data['interpreter-required'] = "Yes"
     }
@@ -345,6 +317,7 @@ router.post('/not-guilty-plea', function (req, res) {
             req.session.data['interpreter-required'] = "No"
     }
 
+    // Do you agree with the witness statement?
     if (req.session.data['witness-statement-group'] == "1") {
             req.session.data['witness-statement-group'] = "Yes"
     }  
@@ -352,6 +325,7 @@ router.post('/not-guilty-plea', function (req, res) {
             req.session.data['witness-statement-group'] = "No"
     }
     
+    // Enter the name of the witness and what you disagree with
     if (req.session.data['own-witness-group'] == "1") {
             req.session.data['own-witness-group'] = "Yes"
     }  
@@ -359,6 +333,7 @@ router.post('/not-guilty-plea', function (req, res) {
             req.session.data['own-witness-group'] = "No"
     }  
 
+    // Are there any dates you can’t attend court?
     if (req.session.data['nogo-dates-group'] == "1") {
             req.session.data['nogo-dates-group'] = "Yes"
     }  
@@ -366,7 +341,11 @@ router.post('/not-guilty-plea', function (req, res) {
             req.session.data['nogo-dates-group'] = "No"
     }  
 
-    res.redirect('/your-finances')
+    if (req.session.data['mitigation-textarea'] == "") {
+        res.redirect('/not-guilty-plea-error')
+    } else {
+        res.redirect('/your-finances')
+    }
     
 })
 
@@ -377,38 +356,10 @@ router.post('/not-guilty-plea-error', function (req, res) {
     
     req.session.data['how-do-you-plea-2'] = "Yes - there will be a court hearing when pleading not guilty";
     
-    // ******
-    // errors
+    // **************************
+    // Radio buttons setting data
     //
-    /*
-    if (req.session.data['mitigation-textarea'] == "") {
-        res.redirect('/not-guilty-plea-error')
-    }  
-    if (req.session.data['interpreter-required'] !== "1") {
-            if (req.session.data['interpreter-required'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['witness-statement-group'] !== "1") {
-            if (req.session.data['witness-statement-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['own-witness-group'] !== "1") {
-            if (req.session.data['own-witness-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }  
-    if (req.session.data['nogo-dates-group'] !== "1") {
-            if (req.session.data['nogo-dates-group'] !== "2") {
-                res.redirect('/not-guilty-plea-error')
-            }
-    }
-    */
-
-    // *************
-    // Radio buttons
-    //
+    // Interpreter required?
     if (req.session.data['interpreter-required'] == "1") {
             req.session.data['interpreter-required'] = "Yes"
     }
@@ -416,6 +367,7 @@ router.post('/not-guilty-plea-error', function (req, res) {
             req.session.data['interpreter-required'] = "No"
     }
 
+    // Do you agree with the witness statement?
     if (req.session.data['witness-statement-group'] == "1") {
             req.session.data['witness-statement-group'] = "Yes"
     }  
@@ -423,6 +375,7 @@ router.post('/not-guilty-plea-error', function (req, res) {
             req.session.data['witness-statement-group'] = "No"
     }
     
+    // Enter the name of the witness and what you disagree with
     if (req.session.data['own-witness-group'] == "1") {
             req.session.data['own-witness-group'] = "Yes"
     }  
@@ -430,6 +383,7 @@ router.post('/not-guilty-plea-error', function (req, res) {
             req.session.data['own-witness-group'] = "No"
     }  
 
+    // Are there any dates you can’t attend court?
     if (req.session.data['nogo-dates-group'] == "1") {
             req.session.data['nogo-dates-group'] = "Yes"
     }  
@@ -437,7 +391,11 @@ router.post('/not-guilty-plea-error', function (req, res) {
             req.session.data['nogo-dates-group'] = "No"
     }  
 
-    res.redirect('/your-finances')
+    if (req.session.data['mitigation-textarea'] == "") {
+        res.redirect('/not-guilty-plea-error')
+    } else {
+        res.redirect('/your-finances')
+    }
 
 })
 
