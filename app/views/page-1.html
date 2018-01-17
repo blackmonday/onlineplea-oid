@@ -1,0 +1,246 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .search-container button {
+      padding: 8px 11px 7px 11px;
+      margin-left: -1px;
+      /*margin-top: 8px;
+      margin-right: 16px;*/
+      background: #005EA5;
+      color: #fff;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background: #2B8CC4;
+    }
+    
+</style>
+
+<main id="content" role="main">
+    
+    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/breadcrumb_back.html" %}
+            
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge bottom_30">Search for a case</h1>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds search-container">
+            <p class="top_0 bottom_5">Enter case reference number or defendant's last name</p>
+            <input class="form-control form-control-3-4" id="full-name-f1" type="text" name="full-name-f1" value="Smith"><button type="submit"><i class="fa fa-search" style="margin-top: 2px"></i></button>
+            <div class="panel panel-border-wide top_15" style="padding-top: 10px; padding-bottom: 5px">
+                <p>
+                    14 cases found
+                </p>
+            </div>
+        </div>
+    </div>
+        
+    <div class="grid-row">
+        <div class="column-full top_30 bottom_30">
+            <hr>
+        </div>
+    </div>
+        
+    <div class="grid-row">
+
+        <div class="column-one-third">
+            <p class="bold">Filter by</p>
+
+            <details>
+                <summary><span class="summary" style="font-size: 14px">Case status</span></summary>
+                <div class="panel panel-border-narrow" style="padding-top: 15px; padding-bottom: 0">
+                    <form>
+                        <fieldset>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="case-status-1" name="case-status" type="checkbox" value="Completed">
+                                <label for="case-status-1" style="font-size: 14px">Completed (3)</label>
+                            </div>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="case-status-2" name="case-status" type="checkbox" value="No plea received">
+                                <label for="case-status-2" style="font-size: 14px">No plea received (7)</label>
+                            </div>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="case-status-3" name="case-status" type="checkbox" value="Plea received - ready for decision">
+                                <label for="case-status-3" style="font-size: 14px">Plea received - ready for decision (3)</label>
+                            </div>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="case-status-4" name="case-status" type="checkbox" value="Withdrawal received - ready for decision">
+                                <label for="case-status-4" style="font-size: 14px">Withdrawal received - ready for decision (1)</label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </details>
+            
+            <details>
+                <summary><span class="summary" style="font-size: 14px">Prosecutor</span></summary>
+                <div class="panel panel-border-narrow" style="padding-top: 15px; padding-bottom: 0">
+                    <form>
+                        <fieldset>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="prosecutor-1" name="prosecutor" type="checkbox" value="Completed">
+                                <label for="prosecutor-1" style="font-size: 14px">TV Licensing (6)</label>
+                            </div>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="prosecutor-2" name="prosecutor" type="checkbox" value="Transport for London">
+                                <label for="prosecutor-2" style="font-size: 14px">Transport for London (5)</label>
+                            </div>
+                            <div class="multiple-choice" style="padding: 0 0 0 20px;">
+                                <input id="prosecutor-3" name="prosecutor" type="checkbox" value="Driver & Vehicle Licensing Agency">
+                                <label for="prosecutor-3" style="font-size: 14px">Driver &amp; Vehicle Licensing Agency (3)</label>
+                            </div>
+                            
+                        </fieldset>
+                    </form>
+                </div>
+            </details>
+            
+            <details>
+                <summary><span class="summary" style="font-size: 14px">Date range</span></summary>
+                <div class="panel panel-border-narrow">
+
+                <form>
+                    <fieldset>
+                        <legend>
+                            <p class="bold bottom_5" style="font-size:14px">From</p>
+                            <p class="form-hint" style="font-size:14px">For example, 18 5 2016</p>
+                        </legend>
+                        <div class="form-date">
+                            <div class="form-group form-group-day">
+                                <label class="form-label" for="dob-day" style="font-size: 14px">Day</label>
+                                <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+                            </div>
+                            <div class="form-group form-group-month">
+                                <label class="form-label" for="dob-month" style="font-size: 14px">Month</label>
+                                <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+                            </div>
+                            <div class="form-group form-group-year">
+                                <label class="form-label" for="dob-year" style="font-size: 14px">Year</label>
+                                <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2016">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                    
+                <form class="top_15">
+                    <fieldset>
+                        <legend>
+                            <p class="bold bottom_5" style="font-size:14px">To</p>
+                            <p class="form-hint" style="font-size:14px">For example, 18 5 2016</p>
+                        </legend>
+                        <div class="form-date">
+                            <div class="form-group form-group-day">
+                                <label class="form-label" for="dob-day" style="font-size: 14px">Day</label>
+                                <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+                            </div>
+                            <div class="form-group form-group-month">
+                                <label class="form-label" for="dob-month" style="font-size: 14px">Month</label>
+                                <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+                            </div>
+                            <div class="form-group form-group-year">
+                                <label class="form-label" for="dob-year" style="font-size: 14px">Year</label>
+                                <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2016">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                    
+                    
+                    
+                
+                </div>
+            </details>
+            
+            
+            
+        </div>
+
+        <div class="column-two-thirds">
+
+            <table class="case-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Reference</th>
+                        <th>D.O.B.</th>
+                        <th>Case status</th>
+                        <th>Prosecutor</th>
+                        <th>Notice served</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">SMITH Billy</a></td>
+                        <td>9012456</td>
+                        <td>4 Apr 1970</td>
+                        <td>No plea received</td>
+                        <td>TV Licensing</td>
+                        <td>30 Apr 2016</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
+
+
