@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+    
+    <div class="phase-banner">
+      <p>
+        <strong class="phase-tag">ALPHA</strong>
+        <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+      </p>
+    </div>
+    
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="javascript:history.go(-1);">Back</a></li>
+        </ol>
+    </div>
+
+    <div class="grid-row">
+        
+        <div class="column-two-thirds">
+ 
+             <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+                <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+                Fix the following
+                </h2>
+                <ul class="error-summary-list">
+                    <li><a href="#error">Why do you believe you're not guilty? - Tell us why you believe you are not guilty</a></li>
+                </ul>
+            </div>
+
+            <h1 class="heading-xlarge">Not guilty plea</h1>
+            <p class="bottom_10">Provide information for magistrates ahead of your court hearing.</p>
+            <p class="bottom_10">&nbsp;</p>
+                                
+            <form class="form" action="" method="post">
+                <div class="form-group">
+                    
+                    <div class="form-group form-group-error" id="error">
+                        <fieldset>
+                            <label class="form-label" for="notguilty-textarea">
+                                <p class="heading-small top_0 bottom_0">Why do you believe you're not guilty?</p>
+                            </label>
+                            <span class="error-message top_0 bottom_5">Tell us why you believe you are not guilty</span>
+                            <textarea class="form-control form-control-3-4" name="mitigation-textarea" id="mitigation-textarea" rows="5">{{ data['mitigation-textarea'] }}</textarea>
+                        </fieldset>
+                    </div>
+                    
+                    <fieldset class="inline">
+                        <legend>
+                            <h2 class="heading-small">Do you need an interpreter in court?</h2>
+                        </legend>
+                        <div class="multiple-choice">
+                            <input id="radio-1" type="radio" name="interpreter-required" value="1" {{ checked('interpreter-required','Yes') }}>
+                            <label for="radio-1">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="radio-2" type="radio" name="interpreter-required" value="2" {{ checked('interpreter-required','No') }}>
+                            <label for="radio-2">No</label>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="interpreter-fields top_15">
+                        <div class="panel panel-border-wide">
+                            <p class="heading-small">Which language?</p>
+                            <span class="form-hint">You can include sign language</span>
+                            <input class="form-control" id="interpreter-language" type="text" name="interpreter-language" value="{{ data['interpreter-language'] }}">
+                        </div>
+                    </div>
+                    
+                    <h2 class="heading-medium top_60 bottom_0">Witnesses</h2>
+                    
+                    <fieldset class="inline">
+                        <legend>
+                            <h2 class="heading-small">Do you agree with the witness statement sent in your notice?</h2>
+                        </legend>
+                        <div class="multiple-choice">
+                            <input id="radio-1" type="radio" name="witness-statement-group" value="1" {{ checked('witness-statement-group','Yes') }}>
+                            <label for="radio-1">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="radio-2" type="radio" name="witness-statement-group" value="2" {{ checked('witness-statement-group','No') }}>
+                            <label for="radio-2">No</label>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="witness-statement-fields top_15">
+                        <div class="panel panel-border-wide">
+                            <p class="bottom_5">Enter the name of the witness and what you disagree with</p>
+                            <textarea class="form-control form-control-3-4" name="witness-statement-textarea" id="witness-statement-textarea" rows="5">{{ data['witness-statement-textarea'] }}</textarea>
+                        </div>
+                    </div>
+
+                    <fieldset class="inline">
+                        <legend>
+                            <h2 class="heading-small">Do you want to bring your own witness?</h2>
+                            <span class="form-hint">Someone who can give evidence in court supporting your case</span>
+                        </legend>
+                        <div class="multiple-choice">
+                            <input id="radio-1" type="radio" name="own-witness-group" value="1" {{ checked('own-witness-group','Yes') }}>
+                            <label for="radio-1">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="radio-2" type="radio" name="own-witness-group" value="2" {{ checked('own-witness-group','No') }}>
+                            <label for="radio-2">No</label>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="own-witness-fields top_15">
+                        <div class="panel panel-border-wide">
+                            <p class="bottom_5">Enter the name and address of your witness and their age if under 18</p>
+                            <textarea class="form-control form-control-3-4" name="own-witness-textarea" id="own-witness-textarea" rows="5">{{ data['own-witness-textarea'] }}</textarea>
+                            <p class="top_30 bottom_5">If your witness needs an interpreter, which language? (optional)</p>
+                            <span class="form-hint">You can include sign language</span>
+                            <input class="form-control" id=" own-witness-interpreter-language" type="text" name="own-witness-interpreter-language" value="{{ data['own-witness-interpreter-language'] }}">
+                        </div>
+                    </div>
+
+                    <h2 class="heading-medium top_60 bottom_0">Attending court</h2>
+                    
+                    <fieldset class="inline">
+                        <legend>
+                            <h2 class="heading-small">Are there any dates you can’t attend court?</h2>
+                        </legend>
+                        <div class="multiple-choice">
+                            <input id="radio-1" type="radio" name="nogo-dates-group" value="1" {{ checked('nogo-dates-group','Yes') }}>
+                            <label for="radio-1">Yes</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="radio-2" type="radio" name="nogo-dates-group" value="2" {{ checked('nogo-dates-group','No') }}>
+                            <label for="radio-2">No</label>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="nogo-dates-fields top_15">
+                        <div class="panel panel-border-wide">
+                            <p class="bottom_5">Enter the dates you can’t attend court</p>
+                            <textarea class="form-control form-control-3-4" name="nogo-dates-textarea" id="nogo-dates-textarea" rows="5">{{ data['nogo-dates-textarea'] }}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <input class="button" type="submit" value="Continue">
+                    <p class="top_15"><a href="javascript:history.go(-1);">Back</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="column-third">
+            {% include "includes/help-and-advice-header.html" %}
+            <!--{% include "includes/help-and-advice-1.html" %}-->
+            {% include "includes/help-and-advice-2.html" %}
+            {% include "includes/help-and-advice-3.html" %}
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
+
+
